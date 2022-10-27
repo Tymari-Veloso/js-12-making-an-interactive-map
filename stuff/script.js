@@ -59,7 +59,7 @@ async function getBusinessData(){
     let businesses = parseData.results
     return businesses
 }
-//forsquare data process
+//foursquare data process
 function processBusinessData(data){
     let businesses = data.map((element) =>{
         let location = {
