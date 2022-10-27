@@ -42,7 +42,7 @@ async function getUserLocation(){
     return [pos.coords.latitude, pos.coords.longitude]
 }
 //get business data from foursquare
-async function getBusinessData(){
+async function getBusinessData(business){
     const options = {
         method: 'GET',
         headers: {
@@ -53,7 +53,7 @@ async function getBusinessData(){
     let limit = 5
     let lat = myMap.coordinates[0]
     let lon = myMap.coordinates[1]
-    let response = await fetch('https://api.foursquare.com/v3/places/search', options)
+    let response = await fetch(`https://api.foursquare.com/v3/places/search?&query=${business}&limit=${limit}&ll=${lat}%2C${lon}`, options)
     let data = await response.text()
     let parseData = JSON.parse(data)
     let businesses = parseData.results
